@@ -1,6 +1,6 @@
-<h1>お問い合わせフォーム</h1>
+# お問い合わせフォーム
 
-<h2>環境構築</h2>
+## 環境構築
 
 <p>Dockerビルド</p>
 <ol>
@@ -25,6 +25,22 @@ APP_TIMEZONE=Asia/Tokyo
 APP_LOCALE=ja
 APP_FALLBACK_LOCALE=ja
 APP_FAKER_LOCALE=ja_JP
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+
+MAIL_MAILER=smtp
+MAIL_SCHEME=null
+MAIL_HOST=mail
+MAIL_PORT=1025
+MAIL_USERNAME="info@example.com"
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="info@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
   <li>composer update</li>
@@ -33,7 +49,7 @@ APP_FAKER_LOCALE=ja_JP
   <li>php artisan storage:link</li>
 </ol>
 
-<h2>使用技術</h2>
+## 使用技術
 <ul>
   <li>PHP 8.4.4</li>
   <li>Laravel 11.44.2</li>
@@ -42,18 +58,27 @@ APP_FAKER_LOCALE=ja_JP
   <li>nginx 1.21.1</li>
 </ul>
 
-<h2>URL</h2>
+## URL
 <ul>
   <li>開発環境：<a href="">http://localhost/</a></li>
   <li>phpMyAdmin：<a href="">http://localhost:8080/</a></li>
   <li>MailHog：<a href="">http://localhost:8025/</a></li>
 </ul>
 
-<h2>ER図</h2>
+## ER図
 ![alt](ER.png)
 
+## テストアカウント
+管理者
+email: admin@coachtech.com
+password: password
+-------------------------
+スタッフ
+email: reina.n@coachtech.com
+password: password
+-------------------------
 
-<h2>連絡事項</h2>
+## 連絡事項
 <h3>運営側に確認済みの項目</h3>
 <ul>
   <li>環境構築について</li>
