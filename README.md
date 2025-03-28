@@ -69,12 +69,12 @@ MAIL_FROM_NAME="${APP_NAME}"
 ![alt](ER.png)
 
 ## テストアカウント
-管理者
-email: admin@coachtech.com
+管理者<br/>
+email: admin@coachtech.com<br/>
 password: password
 -------------------------
-スタッフ
-email: reina.n@coachtech.com
+スタッフ<br/>
+email: reina.n@coachtech.com<br/>
 password: password
 -------------------------
 
