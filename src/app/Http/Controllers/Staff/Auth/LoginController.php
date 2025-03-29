@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-	public function index()
+	public function create()
 	{
 		return redirect("/login");
 	}
 
-	public function logout(Request $request)
+	public function destroy(Request $request)
 	{
 		Auth::logout();
 		$request->session()->invalidate();

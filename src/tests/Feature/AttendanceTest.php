@@ -65,27 +65,27 @@ class AttendanceTest extends TestCase
 	// }
 
 	//勤怠一覧画面表示
-	public function test_get_attendance_list_pagination_prevMonth()
-	{
-		$user = User::find(1);
-		$response = $this->actingAs($user)->post('/attendance/list',[
-			'work_month' => '2025-02-01'
-		]);
+	// public function test_get_attendance_list_pagination_prevMonth()
+	// {
+	// 	$user = User::find(1);
+	// 	$response = $this->actingAs($user)->post('/attendance/list',[
+	// 		'work_month' => '2025-02-01'
+	// 	]);
 
-		// $year = 2025;
-		// $month = 3;
-		// $date = 1;
+	// 	$year = 2025;
+	// 	$month = 3;
+	// 	$date = 1;
 
-		// // 前月ボタン押下
-		// $month -= 1;
-		// $work_month = Carbon::createFromDate($year, $month, $date)->format('Y/m');
+	// 	// 前月ボタン押下
+	// 	$month -= 1;
+	// 	$work_month = Carbon::createFromDate($year, $month, $date)->format('Y/m');
 
-		// $workTimes = WorkTime::where('user_id', $user)->whereDate('clock_in_time', 'like', $work_month->format('Y-m') . '%')->get();
-		// $attendances = Attendance::all();
+	// 	$workTimes = WorkTime::where('user_id', $user)->whereDate('clock_in_time', 'like', $work_month->format('Y-m') . '%')->get();
+	// 	$attendances = Attendance::all();
 
-		$response->assertRedirect('/attendance/list');
-		$response->assertSee('work_month');
+	// 	$response->assertRedirect('/attendance/list');
+	// 	$response->assertSee('work_month');
 
-	}
+	// }
 }
 

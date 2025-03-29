@@ -14,6 +14,8 @@ class AdminAuthenticate extends Middleware
 	 */
 	protected function redirectTo($request)
 	{
-		return route('login.index');
+		if (! $request->expectsJson()) {
+			return route('admin.login.create');
+		}
 	}
 }

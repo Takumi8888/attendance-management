@@ -10,13 +10,13 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 // 認証画面
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('registeredUser.store');
-Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/', [LoginController::class, 'create'])->name('login.create');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('email')->name('login.store');
 
 // ログイン後
 Route::middleware(['auth', 'verified'])->group(function () {
 	// ログアウト処理
-	Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+	Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
 	Route::prefix('attendance')->group(function () {
 		// 勤怠登録画面

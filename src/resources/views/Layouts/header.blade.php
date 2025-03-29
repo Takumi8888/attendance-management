@@ -19,7 +19,7 @@
 <body>
 	<header class="header">
 		<div class="header__logo">
-			<a href="{{ route('admin.login.index') }}">
+			<a href="{{ route('admin.login.create') }}">
 				<img src="{{ asset('img/logo.svg') }}" alt="ロゴ">
 			</a>
 		</div>
@@ -30,7 +30,7 @@
 					<li><a href="{{ route('admin.attendance.index') }}">勤怠一覧</a></li>
 					<li><a href="{{ route('admin.attendance.staff') }}">スタッフ一覧</a></li>
 					<li><a href="{{ route('admin.correctionRequest.pendingApproval') }}">申請一覧</a></li>
-					<form action="{{ route('admin.login.logout') }}" method="post">
+					<form action="{{ route('admin.login.destroy') }}" method="post">
 						@csrf
 						<button class="header__logout">ログアウト</button>
 					</form>
@@ -43,7 +43,7 @@
 					<li><a href="{{ route('attendanceRegister.index') }}">勤怠</a></li>
 					<li><a href="{{ route('attendance.index') }}">勤怠一覧</a></li>
 					<li><a href="{{ route('correctionRequest.pendingApproval') }}">申請</a></li>
-					<form action="{{ route('login.logout') }}" method="post">
+					<form action="{{ route('login.destroy') }}" method="post">
 						@csrf
 						<button class="header__logout">ログアウト</button>
 					</form>

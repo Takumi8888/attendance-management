@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Route;
 
 // ログイン
 Route::prefix('admin')->group(function () {
-	Route::get('/login', [LoginController::class, 'index'])->name('admin.login.index');
+	Route::get('/login', [LoginController::class, 'create'])->name('admin.login.create');
 	Route::post('/login', [LoginController::class, 'store'])->middleware('email')->name('admin.login.store');
 });
 
 // 管理者
-Route::prefix('admin')->middleware('auth:admins')->group(function () {
-	Route::post('/logout', [LoginController::class, 'logout'])->name('admin.login.logout');
+Route::group(['prefix'=>'admin', 'middleware'=>'auth:admins'], function () {
+	Route::post('/logout', [LoginController::class, 'destroy'])->name('admin.login.destroy');
 
 	Route::prefix('attendance')->group(function () {
 		// 勤怠一覧画面

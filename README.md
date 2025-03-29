@@ -46,7 +46,6 @@ MAIL_FROM_NAME="${APP_NAME}"
   <li>composer update</li>
   <li>php artisan key:generate</li>
   <li>php artisan migrate --seed</li>
-  <li>php artisan storage:link</li>
 </ol>
 
 ## 使用技術
