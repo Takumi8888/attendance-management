@@ -32,6 +32,8 @@
 
 .btn span {
 	color: #737373;
+  font-weight: 700;
+  font-size: 1.6rem;
 	vertical-align: middle;
 }
 
@@ -129,6 +131,10 @@ tr {
 	.btn {
 		border-radius: 5.5px;
 	}
+
+  .btn span {
+    font-size: 0.88rem;
+  }
 
 	.bi {
 		font-size: 1.65rem;

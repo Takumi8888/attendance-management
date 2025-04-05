@@ -19,9 +19,13 @@
 <body>
 	<header class="header">
 		<div class="header__logo">
-			<a href="{{ route('admin.login.create') }}">
-				<img src="{{ asset('img/logo.svg') }}" alt="ロゴ">
-			</a>
+      @if(Auth::check())
+        <img src="{{ asset('img/logo.svg') }}" alt="ロゴ">
+      @elseif(Auth::check() == false)
+        <a href="{{ route('admin.login.create') }}">
+          <img src="{{ asset('img/logo.svg') }}" alt="ロゴ">
+        </a>
+      @endif
 		</div>
 		{{-- 管理者 --}}
 		@if(Auth::guard('admins')->check())

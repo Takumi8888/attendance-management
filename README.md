@@ -22,6 +22,7 @@
 
 ```
 APP_TIMEZONE=Asia/Tokyo
+
 APP_LOCALE=ja
 APP_FALLBACK_LOCALE=ja
 APP_FAKER_LOCALE=ja_JP
@@ -49,9 +50,28 @@ MAIL_FROM_NAME="${APP_NAME}"
 </ol>
 
 ## 単体テスト
-<p>下記手順にて単体テストを実施</p>
+<p>下記手順にて単体テストを実施（phpコンテナ上にいる場合は、exitしてください）</p>
+
+<p>MySQLコンテナ</p>
 
 ```
+docker-compose exec mysql bash
+
+mysql -u root -p
+root
+
+CREATE DATABASE demo_test;
+SHOW DATABASES;
+
+exit
+exit
+```
+
+<p>PHPコンテナ</p>
+
+```
+docker-compose exec php bash
+
 php artisan config:clear
 
 vendor/bin/phpunit tests/Feature/Staff/RegisterTest.php
@@ -84,7 +104,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 </ul>
 
 ## テーブル仕様
-<h3>usersテーブル</h3>
+### usersテーブル
 
 | カラム名           | 型              | primary key | unique key | not null | foreign key |
 | :---              | :---            | :---:       | :---:      | :---:    | :---        |
@@ -97,7 +117,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | created_at        | timestamp       |             |            |          |             |
 | updated_at        | timestamp       |             |            |          |             |
 
-<h3>adminsテーブル</h3>
+### adminsテーブル
 
 | カラム名           | 型              | primary key | unique key | not null | foreign key |
 | :---              | :---            | :---:       | :---:      | :---:    | :---        |
@@ -110,7 +130,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | created_at        | timestamp       |             |            |          |             |
 | updated_at        | timestamp       |             |            |          |             |
 
-<h3>work_timesテーブル</h3>
+### work_timesテーブル
 
 | カラム名           | 型              | primary key | unique key | not null | foreign key |
 | :---              | :---            | :---:       | :---:      | :---:    | :---        |
@@ -122,7 +142,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | created_at        | timestamp       |             |            |          |             |
 | updated_at        | timestamp       |             |            |          |             |
 
-<h3>break_timesテーブル</h3>
+### break_timesテーブル
 
 | カラム名           | 型              | primary key | unique key | not null | foreign key    |
 | :---              | :---            | :---:       | :---:      | :---:    | :---           |
@@ -134,7 +154,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | created_at        | timestamp       |             |            |          |                |
 | updated_at        | timestamp       |             |            |          |                |
 
-<h3>attendancesテーブル</h3>
+### attendancesテーブル
 
 | カラム名              | 型              | primary key | unique key | not null | foreign key    |
 | :---                 | :---            | :---:       | :---:      | :---:    | :---           |
@@ -146,7 +166,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | created_at           | timestamp       |             |            |          |                |
 | updated_at           | timestamp       |             |            |          |                |
 
-<h3>correction_requestsテーブル</h3>
+### correction_requestsテーブル
 
 | カラム名           | 型                   | primary key | unique key | not null | foreign key     |
 | :---              | :---                 | :---:       | :---:      | :---:    | :---            |
@@ -174,7 +194,7 @@ password: password
 -------------------------
 
 ## 連絡事項
-<h3>運営側に確認済みの項目</h3>
+### 運営側に確認済みの項目
 <ul>
   <li>環境構築について</li>
   <p>質問：任意の環境で構築しても問題ないか？
@@ -217,7 +237,7 @@ password: password
   </p>
 </ul>
 
-<h3>運営側から回答待ちの項目</h3>
+### 運営側から回答待ちの項目
 <ul>
   <li>対象：テストケースID：2、3</li>
 	<p>質問：一般ユーザー、管理者共にログイン、ログアウトの処理テストがない。</p>
