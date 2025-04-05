@@ -54,6 +54,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 <p>注意：単体テストを実施する際は、1点ずつ実施してください。
 <br/>Carbon::now()を実施する際、1秒のずれが生じる恐れがあります。（エラー例：下記参照）</p>
+
 ```
 Failed asserting that a row in the table [break_times] matches the attributes {
     "work_time_id": 211,
