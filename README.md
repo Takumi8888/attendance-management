@@ -93,7 +93,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | email             | varchar(100)    |             | ○          | ○        |             |
 | email_verified_at | timestamp       |             |            |          |             |
 | password          | varchar(255)    |             |            | ○        |             |
-| remember_token    | varchar(100)    |             |            |          |             |
+| rememberToken     | varchar(100)    |             |            |          |             |
 | created_at        | timestamp       |             |            |          |             |
 | updated_at        | timestamp       |             |            |          |             |
 
@@ -106,7 +106,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | email             | varchar(100)    |             | ○          | ○        |             |
 | email_verified_at | timestamp       |             |            |          |             |
 | password          | varchar(255)    |             |            | ○        |             |
-| remember_token    | varchar(100)    |             |            |          |             |
+| rememberToken     | varchar(100)    |             |            |          |             |
 | created_at        | timestamp       |             |            |          |             |
 | updated_at        | timestamp       |             |            |          |             |
 
@@ -148,17 +148,17 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 
 <h3>correction_requestsテーブル</h3>
 
-| カラム名           | 型                   | primary key | unique key | not null | foreign key    |
-| :---              | :---                 | :---:       | :---:      | :---:    | :---           |
-| id                | bigint unsigned      | ○           |            | ○        |                |
-| attendance_id     | bigint unsigned      |             |            | ○        | work_times(id) |
-| user_id           | bigint unsigned      |             |            | ○        | users(id)      |
-| admin_id          | bigint unsigned      |             |            |          | admins(id)     |
-| application_date  | date                 |             |            | ○        |                |
-| status            | tinyinteger unsigned |             |            | ○        |                |
-| note              | time                 |             |            | ○        |                |
-| created_at        | timestamp            |             |            |          |                |
-| updated_at        | timestamp            |             |            |          |                |
+| カラム名           | 型                   | primary key | unique key | not null | foreign key     |
+| :---              | :---                 | :---:       | :---:      | :---:    | :---            |
+| id                | bigint unsigned      | ○           |            | ○        |                 |
+| attendance_id     | bigint unsigned      |             |            | ○        | attendances(id) |
+| user_id           | bigint unsigned      |             |            | ○        | users(id)       |
+| admin_id          | bigint unsigned      |             |            |          | admins(id)      |
+| application_date  | date                 |             |            | ○        |                 |
+| status            | tinyinteger unsigned |             |            | ○        |                 |
+| note              | text                 |             |            | ○        |                 |
+| created_at        | timestamp            |             |            |          |                 |
+| updated_at        | timestamp            |             |            |          |                 |
 
 ## ER図
 ![alt](ER.png)
@@ -223,19 +223,19 @@ password: password
 	<p>質問：一般ユーザー、管理者共にログイン、ログアウトの処理テストがない。</p>
 
   <li>対象：テストケースID：6-1</li>
-  <p>質問：出勤ボタンが押下された後のステータスは「勤務中」ではなく、「出勤中」</p>
+  <p>質問：出勤ボタンが押下された後のステータスは「勤務中」ではなく、「出勤中」である。</p>
 
   <li>対象：テストケースID：6-2</li>
-	<p>質問：「勤務ボタン」が表示されないではなく、「出勤ボタン」</p>
+	<p>質問：「勤務ボタン」が表示されないではなく、「出勤ボタン」である。</p>
 
   <li>対象：テストケースID：7-5、8-1</li>
-	<p>質問：「勤務中」のユーザーではなく、「出勤中」</p>
+	<p>質問：「勤務中」のユーザーではなく、「出勤中」である。</p>
 
   <li>対象：テストケースID：7-5</li>
-	<p>質問：「休憩の日付」ではなく、「休憩時刻」</p>
+	<p>質問：「休憩の日付」ではなく、「休憩時刻」である。</p>
 
   <li>対象：テストケースID：8-2</li>
-	<p>質問：「退勤の日付」ではなく、「退勤時刻」</p>
+	<p>質問：「退勤の日付」ではなく、「退勤時刻」である。</p>
 
   <li>対象：テストケースID：11-2、13-3</li>
 	<p>質問：休憩開始時間に対して、before_or_equalのバリデーションルールは休憩終了時間
@@ -247,7 +247,7 @@ password: password
 
   <li>対象：テストケースID：11-2、11-3、13-3、13-4</li>
 	<p>質問：「出勤時間もしくは退勤時間が不適切な値です」ではなく、
-	<br/>　　　「休憩時間が勤務時間外です」が正しいです。</p>
+	<br/>　　　「休憩時間が勤務時間外です」が正しい。</p>
 
   <li>対象：テストケースID：11-7</li>
 	<p>質問：勤怠詳細を修正し保存処理をした後に、管理者が承認をしないと申請一覧の
