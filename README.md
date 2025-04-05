@@ -121,6 +121,16 @@ Found similar results: [
   <li>MailHog：<a href="">http://localhost:8025/</a></li>
 </ul>
 
+## テストアカウント
+### 管理者
+email: admin@coachtech.com<br/>
+password: password
+-------------------------
+### スタッフ
+email: reina.n@coachtech.com<br/>
+password: password
+-------------------------
+
 ## テーブル仕様
 ### usersテーブル
 
@@ -200,16 +210,6 @@ Found similar results: [
 
 ## ER図
 ![alt](ER.png)
-
-## テストアカウント
-管理者<br/>
-email: admin@coachtech.com<br/>
-password: password
--------------------------
-スタッフ<br/>
-email: reina.n@coachtech.com<br/>
-password: password
--------------------------
 
 ## 連絡事項
 ### 運営側に確認済みの項目
