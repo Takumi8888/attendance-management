@@ -118,7 +118,7 @@ Found similar results: [
   <li>開発環境（一般ユーザーログイン画面）：<a href="">http://localhost/login</a></li>
   <li>開発環境（管理者ログイン画面）　　　：<a href="">http://localhost/admin/login</a></li>
   <li>phpMyAdmin：<a href="">http://localhost:8080/</a></li>
-  <li>MailHog   ：<a href="">http://localhost:8025/</a></li>
+  <li>MailHog　　：<a href="">http://localhost:8025/</a></li>
 </ul>
 
 ## テストアカウント
