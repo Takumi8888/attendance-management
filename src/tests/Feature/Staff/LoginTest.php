@@ -1,14 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Staff;
 
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-// use Illuminate\Support\Facades\Auth;
 
-class LoginUserTest extends TestCase
+class LoginTest extends TestCase
 {
 	use DatabaseMigrations;
 
@@ -18,10 +17,11 @@ class LoginUserTest extends TestCase
 		$this->seed(DatabaseSeeder::class);
 	}
 
-	public function test_login_user_validation_email_required()
+	// 1.「メールアドレスを入力してください」というバリデーションメッセージが表示される
+	public function test_login_2_1()
 	{
 		User::create([
-			'name'				=> 'テストユーザ',
+			'name'				=> 'test_user',
 			'email'				=> 'staff@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -32,15 +32,15 @@ class LoginUserTest extends TestCase
 			'email'    => null,
 			'password' => 'password',
 		]);
-
 		$response->assertSessionHasErrors(['email' => 'メールアドレスを入力してください']);
 		$response->assertStatus(302);
 	}
 
-	public function test_login_user_validation_password_required()
+	// 2.「パスワードを入力してください」というバリデーションメッセージが表示される
+	public function test_login_2_2()
 	{
 		User::create([
-			'name'				=> 'テストユーザ',
+			'name'				=> 'test_user',
 			'email'				=> 'staff@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -51,15 +51,15 @@ class LoginUserTest extends TestCase
 			'email'    => 'staff@example.com',
 			'password' => null,
 		]);
-
 		$response->assertSessionHasErrors(['password' => 'パスワードを入力してください']);
 		$response->assertStatus(302);
 	}
 
-	public function test_login_user_validation_password_failed()
+	// 3.「ログイン情報が登録されていません」というバリデーションメッセージが表示される
+	public function test_login_2_3()
 	{
 		User::create([
-			'name'				=> 'テストユーザ',
+			'name'				=> 'test_user',
 			'email'				=> 'staff@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -70,15 +70,15 @@ class LoginUserTest extends TestCase
 			'email'    => 'admin@example.com',
 			'password' => 'password',
 		]);
-
 		$response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません']);
 		$response->assertStatus(302);
 	}
 
-	public function test_login_user()
+	// 4.ログイン処理が実行される
+	public function test_login_add1_login()
 	{
 		$user = User::create([
-			'name'				=> 'テストユーザ',
+			'name'				=> 'test_user',
 			'email'				=> 'staff@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -89,18 +89,21 @@ class LoginUserTest extends TestCase
 			'email'    => 'staff@example.com',
 			'password' => 'password',
 		]);
-
 		$response->assertStatus(302);
 		$response->assertRedirect('/attendance');
+
 		$this->assertAuthenticatedAs($user);
 	}
 
-	public function test_logout_user() {
+	// 5.ログアウト処理が実行される
+	public function test_login_add2_logout()
+	{
 		$user = User::find(1);
-		$response = $this->actingAs($user)->post('/logout');
 
+		$response = $this->actingAs($user)->post('/logout');
 		$response->assertStatus(302);
 		$response->assertRedirect('/login');
+
 		$this->assertGuest();
 	}
 }

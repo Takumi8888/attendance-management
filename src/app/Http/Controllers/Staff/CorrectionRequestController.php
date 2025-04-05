@@ -154,6 +154,6 @@ class CorrectionRequestController extends Controller
 			'note'             => $request->note,
 		]);
 
-		return redirect('/stamp_correction_request/list/pendingApproval');
+		return redirect()->route('correctionRequest.pendingApproval');
 	}
 }

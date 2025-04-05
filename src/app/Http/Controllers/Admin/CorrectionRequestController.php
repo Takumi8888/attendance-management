@@ -17,8 +17,8 @@ class CorrectionRequestController extends Controller
 {
 	public function pendingApproval()
 	{
-		$admin = Auth::user();
 		$page = 'pending_approval';
+		$admin = Auth::user();
 		$pendingApprovals = CorrectionRequest::where('status', 1)->paginate(15);
 
 		return view('Common.request_list', compact('admin', 'page', 'pendingApprovals'));
@@ -26,8 +26,8 @@ class CorrectionRequestController extends Controller
 
 	public function approval()
 	{
-		$admin = Auth::user();
 		$page = 'approval';
+		$admin = Auth::user();
 		$approvals = CorrectionRequest::where('status', 2)->paginate(15);
 
 		return view('Common.request_list', compact('admin', 'page', 'approvals'));
@@ -161,7 +161,7 @@ class CorrectionRequestController extends Controller
 			'note'             => $request->note,
 		]);
 
-		return redirect('/admin/stamp_correction_request/list/pendingApproval');
+		return redirect()->route('admin.correctionRequest.pendingApproval');
 	}
 
 	public function edit(WorkTime $workTime)
@@ -187,7 +187,7 @@ class CorrectionRequestController extends Controller
 			'status'   => 2,
 		]);
 
-		return redirect('/admin/stamp_correction_request/list/approval');
+		return redirect()->route('admin.correctionRequest.pendingApproval');
 	}
 
 	public function approved(WorkTime $workTime)

@@ -35,7 +35,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth:admins'], function () {
 
 	// 申請一覧画面
 	Route::prefix('stamp_correction_request')->group(function () {
-		Route::get('/list/pendingApproval', [CorrectionRequestController::class, 'pendingApproval'])->name('admin.correctionRequest.pendingApproval');
+		Route::get('/list', [CorrectionRequestController::class, 'pendingApproval'])->name('admin.correctionRequest.pendingApproval');
 		Route::get('/list/approval', [CorrectionRequestController::class, 'approval'])->name('admin.correctionRequest.approval');
 		Route::post('/list/approval', [CorrectionRequestController::class, 'approval'])->name('admin.correctionRequest.approval');
 

@@ -36,8 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	});
 
 	// 申請一覧画面
-	Route::prefix('stamp_correction_request/list')->group(function () {
-		Route::get('/pendingApproval', [CorrectionRequestController::class, 'pendingApproval'])->name('correctionRequest.pendingApproval');
-		Route::post('/approval', [CorrectionRequestController::class, 'approval'])->name('correctionRequest.approval');
+	Route::prefix('stamp_correction_request')->group(function () {
+		Route::get('/list', [CorrectionRequestController::class, 'pendingApproval'])->name('correctionRequest.pendingApproval');
+		Route::post('/list', [CorrectionRequestController::class, 'approval'])->name('correctionRequest.approval');
 	});
 });

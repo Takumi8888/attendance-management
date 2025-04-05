@@ -85,3 +85,27 @@ input {
 	margin: 0 auto;
 	background-color: #F0EFF2;
 }
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	/* height, margin: 55% */
+	/* padding, margin: 55% */
+	/* font-size: 55% */
+	input {
+		border-radius: 2.75px;
+	}
+
+	.header {
+		z-index: 55;
+		height: 44px;
+		padding: 0 27.5px 0 13.75px;
+	}
+
+	.header__nav a {
+		margin-right: 22px;
+		font-size: 1.32rem;
+	}
+
+	.header__logout {
+		font-size: 1.32rem;
+	}
+}

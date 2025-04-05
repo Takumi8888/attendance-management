@@ -48,6 +48,23 @@ MAIL_FROM_NAME="${APP_NAME}"
   <li>php artisan migrate --seed</li>
 </ol>
 
+## 単体テスト
+```
+php artisan config:clear
+
+vendor/bin/phpunit tests/Feature/Staff/RegisterTest.php
+vendor/bin/phpunit tests/Feature/Staff/LoginTest.php
+vendor/bin/phpunit tests/Feature/Staff/AttendanceRegisterTest.php
+vendor/bin/phpunit tests/Feature/Staff/AttendanceTest.php
+vendor/bin/phpunit tests/Feature/Staff/CorrectionRequestTest.php
+
+vendor/bin/phpunit tests/Feature/Admin/LoginTest.php
+vendor/bin/phpunit tests/Feature/Admin/AttendanceTest.php
+vendor/bin/phpunit tests/Feature/Admin/CorrectionRequestTest.php
+vendor/bin/phpunit tests/Feature/Admin/StaffTest.php
+vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
+```
+
 ## 使用技術
 <ul>
   <li>PHP 8.4.4</li>
@@ -63,6 +80,37 @@ MAIL_FROM_NAME="${APP_NAME}"
   <li>phpMyAdmin：<a href="">http://localhost:8080/</a></li>
   <li>MailHog：<a href="">http://localhost:8025/</a></li>
 </ul>
+
+## テーブル仕様
+<h3>usersテーブル</h3>
+|カラム名|型|primary key|unique key|not null|foreign key|
+|id|bigint|〇||〇||
+|name|varchar(50)|||〇||
+|email|varchar(100)||〇|〇||
+|email_verified_at|timestamp|||||
+|password|varchar(255)|||〇||
+|remember_token|varchar(100)|||||
+|created_at|timestamp|||||
+|updated_at|timestamp|||||
+
+<h3>adminsテーブル</h3>
+|カラム名|型|primary key|unique key|not null|foreign key|
+|id|bigint|〇||〇||
+|name|varchar(50)|||〇||
+|email|varchar(100)||〇|〇||
+|email_verified_at|timestamp|||||
+|password|varchar(255)|||〇||
+|remember_token|varchar(100)|||||
+|created_at|timestamp|||||
+|updated_at|timestamp|||||
+
+<h3>work_timesテーブル</h3>
+|||||||
+|||||||
+|||||||
+|||||||
+|||||||
+
 
 ## ER図
 ![alt](ER.png)
@@ -118,6 +166,53 @@ password: password
 	<br/>　　　Figmaでは「出勤・退勤」「休憩」「備考」の3項目となっている。
   	<br/>回答：日付の更新はできない仕様にする。
   	<br/>対応：日付の更新はできない仕様にした。
+  </p>
+
+<h3>運営側から回答待ちの項目</h3>
+<ul>
+  <li>環境構築について</li>
+  <p>対象：テストケースID：2、3
+  	<br/>質問：一般ユーザー、管理者共にログイン、ログアウトの処理テストがない。
+  </p>
+
+  <p>対象：テストケースID：6-1
+  	<br/>質問：出勤ボタンが押下された後のステータスは「勤務中」ではなく、「出勤中」
+  </p>
+
+  <p>対象：テストケースID：6-2
+  	<br/>質問：「勤務ボタン」が表示されないではなく、「出勤ボタン」
+  </p>
+
+  <p>対象：テストケースID：7-5、8-1
+  	<br/>質問：「勤務中」のユーザーではなく、「出勤中」
+  </p>
+
+  <p>対象：テストケースID：7-5
+  	<br/>質問：「休憩の日付」ではなく、「休憩時刻」
+  </p>
+
+  <p>対象：テストケースID：8-2
+  	<br/>質問：「退勤の日付」ではなく、「退勤時刻」
+  </p>
+
+  <p>対象：テストケースID：11-2、13-3
+  	<br/>質問：休憩開始時間に対して、before_or_equalのバリデーションルールは休憩終了時間
+	<br/>　　　（end_time.*）を指定しなくてはいけないため、退勤時間を指定することはできない。
+	<br/>　　　また、休憩終了時間におけるbefore_or_equalのバリデーションルールは退勤時間
+	<br/>　　　（clock_out_time）を指定しているので、問題なくケアできている。以上の理由から、
+	<br/>　　　勤務時間内の休憩判定をする場合、休憩開始と出勤時間、休憩終了時間と退勤時間
+	<br/>　　　にて確認するほうが正しい。
+  </p>
+
+  <p>対象：テストケースID：11-2、11-3、13-3、13-4
+  	<br/>質問：「出勤時間もしくは退勤時間が不適切な値です」ではなく、
+	<br/>　　　「休憩時間が勤務時間外です」が正しいです。
+  </p>
+
+  <p>対象：テストケースID：11-7
+  	<br/>質問：勤怠詳細を修正し保存処理をした後に、管理者が承認をしないと申請一覧の
+	<br/>　　　承認済みに表示されない。そのため、テスト手順として、「3.管理者が承認する」
+	<br/>　　　「4.申請画面一覧を開く」「5.管理者が・・・」が正しい。
   </p>
 
 </ul>

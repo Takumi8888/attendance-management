@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('correction_requests', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('attendance_id')->constrained('attendances')->cascadeOnDelete()->comment('出勤ID');
-			$table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete()->comment('管理者ID');
+			$table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->comment('スタッフID');
 			$table->foreignId('admin_id')->nullable()->constrained('admins')->cascadeOnDelete()->comment('管理者ID');
 			$table->date('application_date')->comment('申請日');
 			$table->tinyInteger('status')->unsigned()->comment('申請状態');

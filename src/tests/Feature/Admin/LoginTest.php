@@ -1,15 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\Admin;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-// use Illuminate\Support\Facades\Auth;
 
-
-class LoginAdminTest extends TestCase
+class LoginTest extends TestCase
 {
 	use DatabaseMigrations;
 
@@ -19,11 +17,11 @@ class LoginAdminTest extends TestCase
 		$this->seed(DatabaseSeeder::class);
     }
 
-
-	public function test_login_admin_validation_email_required()
+	// 1.「メールアドレスを入力してください」というバリデーションメッセージが表示される
+	public function test_login_3_1()
 	{
 		Admin::create([
-			'name'				=> '管理者',
+			'name'				=> 'test_admin',
 			'email'				=> 'admin@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -34,16 +32,15 @@ class LoginAdminTest extends TestCase
 			'email'    => null,
 			'password' => 'password',
 		]);
-
 		$response->assertSessionHasErrors(['email' => 'メールアドレスを入力してください']);
 		$response->assertStatus(302);
 	}
 
-
-	public function test_login_admin_validation_password_required()
+	// 2.「パスワードを入力してください」というバリデーションメッセージが表示される
+	public function test_login_3_2()
 	{
 		Admin::create([
-			'name'				=> '管理者',
+			'name'				=> 'test_admin',
 			'email'				=> 'admin@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -54,16 +51,15 @@ class LoginAdminTest extends TestCase
 			'email'    => 'admin@example.com',
 			'password' => null,
 		]);
-
 		$response->assertSessionHasErrors(['password' => 'パスワードを入力してください']);
 		$response->assertStatus(302);
 	}
 
-
-	public function test_login_admin_validation_password_failed()
+	// 3.「ログイン情報が登録されていません」というバリデーションメッセージが表示される
+	public function test_login_3_3()
 	{
 		Admin::create([
-			'name'				=> '管理者',
+			'name'				=> 'test_admin',
 			'email'				=> 'admin@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -74,16 +70,15 @@ class LoginAdminTest extends TestCase
 			'email'    => 'staff@example.com',
 			'password' => 'password',
 		]);
-
 		$response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません']);
 		$response->assertStatus(302);
 	}
 
-
-	public function test_login_admin()
+	// 4.ログイン処理が実行される
+	public function test_login_add1_login()
 	{
 		$admin = Admin::create([
-			'name'				=> '管理者',
+			'name'				=> 'test_admin',
 			'email'				=> 'admin@example.com',
 			'email_verified_at'	=> '2025-04-01 12:00:00',
 			'password'			=> 'password',
@@ -94,25 +89,21 @@ class LoginAdminTest extends TestCase
 			'email'    => 'admin@example.com',
 			'password' => 'password',
 		]);
-
-		// dd(Auth::guard('admins')->check(), Auth::guard('web')->check());
-
 		$response->assertStatus(302);
 		$response->assertRedirect('/admin/attendance/list');
+
 		$this->assertAuthenticatedAs($admin, 'admins');
 	}
 
-
-	public function test_logout_admin()
+	// 5.ログアウト処理が実行される
+	public function test_login_add2_logout()
 	{
 		$admin = Admin::find(1);
+
 		$response = $this->actingAs($admin, 'admins')->post(route('admin.login.destroy'));
-
-		// 認証確認
-		// dd(Auth::guard('admins')->check(), Auth::guard('web')->check());
-
 		$response->assertStatus(302);
 		$response->assertRedirect('/login');
+
 		$this->assertGuest();
 	}
 }

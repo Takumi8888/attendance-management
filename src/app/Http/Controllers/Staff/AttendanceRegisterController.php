@@ -72,7 +72,7 @@ class AttendanceRegisterController extends Controller
 
 		$attendance = Attendance::create([
 			'work_time_id' => $workTime->id,
-			'work_day'         => $date,
+			'work_day'     => $date,
 		]);
 
 		return view('Staff.attendance_register', compact('status', 'user', 'workTime'));
@@ -95,7 +95,7 @@ class AttendanceRegisterController extends Controller
 			'start_time'   => $breakTimeStart,
 		]);
 
-		return view('Staff.attendance_register', compact('status', 'user', 'breakTime'));
+		return view('Staff.attendance_register', compact('status', 'user', 'workTime', 'breakTime'));
 	}
 
 	// 休憩戻ボタン押下 → 退勤・休憩入ボタン表示（status == 1）
@@ -127,6 +127,28 @@ class AttendanceRegisterController extends Controller
 		// WorkTimeデータ取得
 		$workTime_id = $breakTime->work_time_id;
 		$workTime = WorkTime::find($workTime_id);
+
+		// 総休憩時間
+		$breakTime = BreakTime::where('work_time_id', $workTime->id)->get();
+		$attendance = Attendance::where('work_time_id', $workTime->id)->first();
+		$count = count($breakTime);
+		$today = strtotime(new Carbon('today'));
+		$add_breakTime = 0;
+
+		for ($i = 0; $i < $count; $i++) {
+			$actual_breakTime = strtotime($breakTime[$i]->break_time);
+			$difference_breakTime = $actual_breakTime - $today;
+			$add_breakTime = $add_breakTime + $difference_breakTime;
+		}
+
+		$hours = floor($add_breakTime / 3600);
+		$minutes = floor(($add_breakTime % 3600) / 60);
+		$seconds = $add_breakTime % 60;
+		$total_break_time = date($hours . ':' . $minutes . ':' . $seconds);
+
+		$attendance->update([
+			'total_break_time' => $total_break_time,
+		]);
 
 		return view('Staff.attendance_register', compact('status', 'user', 'workTime'));
 	}
