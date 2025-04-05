@@ -49,6 +49,8 @@ MAIL_FROM_NAME="${APP_NAME}"
 </ol>
 
 ## 単体テスト
+<p>下記手順にて単体テストを実施</p>
+
 ```
 php artisan config:clear
 
@@ -96,6 +98,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | updated_at        | timestamp       |             |            |          |             |
 
 <h3>adminsテーブル</h3>
+
 | カラム名           | 型              | primary key | unique key | not null | foreign key |
 | :---              | :---            | :---:       | :---:      | :---:    | :---        |
 | id                | bigint unsigned | ○           |            | ○        |             |
