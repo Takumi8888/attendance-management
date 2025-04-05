@@ -83,6 +83,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 
 ## テーブル仕様
 <h3>usersテーブル</h3>
+
 | カラム名           | 型           | primary key | unique key | not null | foreign key |
 | :---              | :---         | :---:       | :---:      | :---:    | :---        |
 | id                | bigint       | ○           |            | ○        |             |
@@ -95,6 +96,7 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 | updated_at        | timestamp    |             |            |          |             |
 
 <h3>adminsテーブル</h3>
+
 | カラム名           | 型           | primary key | unique key | not null | foreign key |
 | :---              | :---         | :---:       | :---:      | :---:    | :---        |
 | id                | bigint       | ○           |            | ○        |             |
