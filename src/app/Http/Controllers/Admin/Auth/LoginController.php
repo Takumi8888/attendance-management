@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -21,19 +20,10 @@ class LoginController extends Controller
 	{
 		$credentials = $request->only(['email', 'password']);
 
-		// 管理者の未認証確認
-		// dd(Auth::guard('admins')->check());
-
-		//ユーザー情報が見つかったらログイン
 		if (Auth::guard('admins')->attempt($credentials)) {
-			// 管理者の認証確認
-			// dd(Auth::guard('admins')->check());
-
-			//ログイン後に表示するページにリダイレクト
 			return redirect()->route('admin.attendance.index');
 		}
 
-		//ログインできなかったときに元のページに戻る
 		return back()
 		->withInput($request->except('password'))
 		->withErrors(['email' => 'ログイン情報が登録されていません']);
@@ -41,18 +31,10 @@ class LoginController extends Controller
 
 	public function destroy(Request $request)
 	{
-		// 管理者の認証確認
-		// dd(Auth::guard('admins')->check());
-
 		Auth::guard('admins')->logout();
-
-		// 管理者の未認証確認
-		// dd(Auth::guard('admins')->check());
-
 		$request->session()->invalidate();
 		$request->session()->regenerateToken();
 
-		// ログアウトしたらログインフォームにリダイレクト
 		return redirect('/login');
 	}
 }
