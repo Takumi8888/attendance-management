@@ -84,37 +84,78 @@ vendor/bin/phpunit tests/Feature/Admin/ApprovalTest.php
 ## テーブル仕様
 <h3>usersテーブル</h3>
 
-| カラム名           | 型           | primary key | unique key | not null | foreign key |
-| :---              | :---         | :---:       | :---:      | :---:    | :---        |
-| id                | bigint       | ○           |            | ○        |             |
-| name              | varchar(50)  |             |            | ○        |             |
-| email             | varchar(100) |             | ○          | ○        |             |
-| email_verified_at | timestamp    |             |            |          |             |
-| password          | varchar(255) |             |            | ○        |             |
-| remember_token    | varchar(100) |             |            |          |             |
-| created_at        | timestamp    |             |            |          |             |
-| updated_at        | timestamp    |             |            |          |             |
+| カラム名           | 型              | primary key | unique key | not null | foreign key |
+| :---              | :---            | :---:       | :---:      | :---:    | :---        |
+| id                | bigint unsigned | ○           |            | ○        |             |
+| name              | varchar(50)     |             |            | ○        |             |
+| email             | varchar(100)    |             | ○          | ○        |             |
+| email_verified_at | timestamp       |             |            |          |             |
+| password          | varchar(255)    |             |            | ○        |             |
+| remember_token    | varchar(100)    |             |            |          |             |
+| created_at        | timestamp       |             |            |          |             |
+| updated_at        | timestamp       |             |            |          |             |
 
 <h3>adminsテーブル</h3>
-
-| カラム名           | 型           | primary key | unique key | not null | foreign key |
-| :---              | :---         | :---:       | :---:      | :---:    | :---        |
-| id                | bigint       | ○           |            | ○        |             |
-| name              | varchar(50)  |             |            | ○        |             |
-| email             | varchar(100) |             | ○          | ○        |             |
-| email_verified_at | timestamp    |             |            |          |             |
-| password          | varchar(255) |             |            | ○        |             |
-| remember_token    | varchar(100) |             |            |          |             |
-| created_at        | timestamp    |             |            |          |             |
-| updated_at        | timestamp    |             |            |          |             |
+| カラム名           | 型              | primary key | unique key | not null | foreign key |
+| :---              | :---            | :---:       | :---:      | :---:    | :---        |
+| id                | bigint unsigned | ○           |            | ○        |             |
+| name              | varchar(50)     |             |            | ○        |             |
+| email             | varchar(100)    |             | ○          | ○        |             |
+| email_verified_at | timestamp       |             |            |          |             |
+| password          | varchar(255)    |             |            | ○        |             |
+| remember_token    | varchar(100)    |             |            |          |             |
+| created_at        | timestamp       |             |            |          |             |
+| updated_at        | timestamp       |             |            |          |             |
 
 <h3>work_timesテーブル</h3>
-|||||||
-|||||||
-|||||||
-|||||||
-|||||||
 
+| カラム名           | 型              | primary key | unique key | not null | foreign key |
+| :---              | :---            | :---:       | :---:      | :---:    | :---        |
+| id                | bigint unsigned | ○           |            | ○        |             |
+| user_id           | bigint unsigned |             |            | ○        | users(id)   |
+| clock_in_time     | dateTime        |             |            | ○        |             |
+| clock_out_time    | dateTime        |             |            |          |             |
+| work_time         | time            |             |            |          |             |
+| created_at        | timestamp       |             |            |          |             |
+| updated_at        | timestamp       |             |            |          |             |
+
+<h3>break_timesテーブル</h3>
+
+| カラム名           | 型              | primary key | unique key | not null | foreign key    |
+| :---              | :---            | :---:       | :---:      | :---:    | :---           |
+| id                | bigint unsigned | ○           |            | ○        |                |
+| work_time_id      | bigint unsigned |             |            | ○        | work_times(id) |
+| start_time        | dateTime        |             |            | ○        |                |
+| end_time          | dateTime        |             |            |          |                |
+| work_time         | time            |             |            |          |                |
+| created_at        | timestamp       |             |            |          |                |
+| updated_at        | timestamp       |             |            |          |                |
+
+<h3>attendancesテーブル</h3>
+
+| カラム名              | 型              | primary key | unique key | not null | foreign key    |
+| :---                 | :---            | :---:       | :---:      | :---:    | :---           |
+| id                   | bigint unsigned | ○           |            | ○        |                |
+| work_time_id         | bigint unsigned |             |            | ○        | work_times(id) |
+| work_day             | date            |             |            | ○        |                |
+| total_break_time     | time            |             |            |          |                |
+| actual_working_hours | time            |             |            |          |                |
+| created_at           | timestamp       |             |            |          |                |
+| updated_at           | timestamp       |             |            |          |                |
+
+<h3>correction_requestsテーブル</h3>
+
+| カラム名           | 型                   | primary key | unique key | not null | foreign key    |
+| :---              | :---                 | :---:       | :---:      | :---:    | :---           |
+| id                | bigint unsigned      | ○           |            | ○        |                |
+| attendance_id     | bigint unsigned      |             |            | ○        | work_times(id) |
+| user_id           | bigint unsigned      |             |            | ○        | users(id)      |
+| admin_id          | bigint unsigned      |             |            |          | admins(id)     |
+| application_date  | date                 |             |            | ○        |                |
+| status            | tinyinteger unsigned |             |            | ○        |                |
+| note              | time                 |             |            | ○        |                |
+| created_at        | timestamp            |             |            |          |                |
+| updated_at        | timestamp            |             |            |          |                |
 
 ## ER図
 ![alt](ER.png)
