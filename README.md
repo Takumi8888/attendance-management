@@ -122,11 +122,11 @@ Found similar results: [
 </ul>
 
 ## テストアカウント
-### 管理者
+管理者<br/>
 email: admin@coachtech.com<br/>
 password: password
 -------------------------
-### スタッフ
+スタッフ<br/>
 email: reina.n@coachtech.com<br/>
 password: password
 -------------------------
