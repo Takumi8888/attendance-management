@@ -1,0 +1,90 @@
+.container {
+	padding: 125px 0;
+}
+
+.page__title {
+	width: 60%;
+	margin: 0 auto;
+	padding-left: 20px;
+	border-left: 5px solid #000000;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 3.0rem;
+}
+
+table {
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 95px;
+	overflow: hidden;
+	border-radius: 10px;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+tr {
+	background-color: #FFFFFF;
+}
+
+.staff-list__header,
+.staff-list__header-name,
+.staff-list__data {
+	padding: 15px 0;
+	color: #737373;
+	font-weight: 700;
+	font-size: 1.6rem;
+	text-align: center;
+}
+
+.staff-list__header {
+	width: 16%;
+	border-bottom: 3px solid #E1E1E1;
+}
+
+.staff-list__header-name {
+	width: 20%;
+	border-bottom: 3px solid #E1E1E1;
+}
+
+.staff-list__data {
+	border-top: 1px solid #E1E1E1;
+}
+
+.staff-list__detail {
+	color: #000000;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	/* margin, padding: 55% */
+	/* font-size: 55% */
+	.container {
+		padding: 68.75px 0;
+	}
+
+	.page__title {
+		padding-left: 11px;
+		border-left: 2.75px solid #000000;
+		font-size: 1.65rem;
+	}
+
+	table {
+		margin-top: 52.25px;
+		border-radius: 5.5px;
+	}
+
+	.staff-list__header,
+	.staff-list__header-name,
+	.staff-list__data {
+		padding: 8.25px 0;
+		font-size: 0.88rem;
+	}
+
+	.staff-list__header,
+	.staff-list__header-name {
+		border-bottom: 1.65px solid #E1E1E1;
+	}
+
+	.staff-list__data {
+		border-top: 0.55px solid #E1E1E1;
+	}
+}

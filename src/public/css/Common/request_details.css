@@ -1,0 +1,319 @@
+.container {
+	padding: 90px 0;
+}
+
+.page__title {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 90px;
+	padding-left: 20px;
+	border-left: 5px solid #000000;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 3.0rem;
+}
+
+.request-form {
+	width: 60%;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 10px;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+tr {
+	background-color: #FFFFFF;
+}
+
+th {
+	width: 35%;
+	height: 30px;
+	padding: 30px 0 30px 65px;
+	border-bottom: 2px solid #E1E1E1;
+	color: #737373;
+	font-weight: 700;
+	font-size: 1.6rem;
+	text-align: left;
+}
+
+td {
+	border-bottom: 2px solid #E1E1E1;
+	text-align: left;
+}
+
+p,
+span,
+.request__data-name,
+/* .request__data-date, */
+.request__data-year--display,
+.request__note {
+	color: #000000;
+	font-weight: 700;
+	font-size: 1.6rem;
+	letter-spacing: 2px;
+}
+
+p,
+.request__data-name,
+/* .request__data-date, */
+.request__data-year--display,
+.request__note {
+	padding-left: 25px;
+}
+
+.request__data-request-date,
+.request__data-time {
+	display: flex;
+	justify-content: left;
+	position: relative;
+	height: 40px;
+	padding: 30px 0 5px 0;
+	text-align: center;
+}
+
+.request__data input {
+	padding: 10px 25px;
+	border: 1px solid #E1E1E1;
+	font-weight: 700;
+	font-size: 1.6rem;
+	letter-spacing: 3px;
+}
+
+/* 参考：https://qiita.com/koji-kimura/items/21e9a300658a55416084 */
+/* 時計アイコン非表示 */
+input[type='time']::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+.request__error {
+	margin-bottom: 25px;
+	color: #FF0000;
+	font-size: 1.6rem;
+}
+
+/* .request__data-date, */
+.request__data-year--display,
+.request__data-date--display,
+.request__clock-in-time--display,
+.request__clock-out-time--display,
+.request__start-time--display,
+.request__end-time--display,
+.request__hyphen--display {
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	transform: translate(0%, -50%);
+}
+
+.request__clock-in-time,
+.request__clock-out-time,
+.request__start-time,
+.request__end-time,
+.hyphen,
+.request__add-start-time,
+.request__add-end-time,
+.request__add-hyphen {
+	position: absolute;
+	top: 65%;
+	z-index: 10;
+	transform: translate(0%, -50%);
+}
+
+/* .request__data-date, */
+.request__data-year--display,
+.request__clock-in-time,
+.request__start-time,
+.request__add-start-time,
+.request__clock-in-time--display,
+.request__start-time--display {
+	left: 0%;
+}
+
+.request__data-date--display,
+.request__clock-out-time,
+.request__end-time,
+.request__add-end-time,
+.request__clock-out-time--display,
+.request__end-time--display {
+	left: 50%;
+}
+
+span {
+	left: 25%;
+	margin: 0 50px;
+}
+
+.request__note {
+	width: 73%;
+	height: 100px;
+	margin: 30px 0 5px 0;
+	padding: 10px 25px;
+	border: 1px solid #E1E1E1;
+	border-radius: 5px;
+	box-sizing: border-box;
+	white-space: pre-wrap;
+	outline: none;
+	resize: none;
+}
+
+.request__note--display {
+	flex-wrap: wrap;
+	width: 425px;
+	height: 100px;
+	margin-top: 20px;
+	padding: 10px 25px;
+	overflow-wrap: break-word;
+}
+
+.request-form__button {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btn {
+	width: 15%;
+	height: 50px;
+	margin-top: 120px;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-weight: 700;
+	font-size: 2.2rem;
+}
+
+.btn--request,
+.btn--approve {
+	background-color: #000000;
+}
+
+.btn--approved {
+	background-color: #696969;
+}
+
+.request-form__message {
+	margin-top: 25px;
+	color: #FF0000;
+	font-weight: 800;
+	font-size: 2.2rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	/* margin, padding: 55% */
+	/* font-size: 55% */
+	.container {
+		padding: 49.5px 0;
+	}
+
+	.page__title {
+		margin-bottom: 49.5px 0;
+		padding-left: 11px;
+		border-left: 2.75px solid #000000;
+		font-size: 1.65rem;
+	}
+
+	table {
+		border-radius: 5.5px;
+	}
+
+	th {
+		height: 16.5px;
+		padding: 16.5px 0 16.5px 35.75px;
+		border-bottom: 1.1px solid #E1E1E1;
+		font-size: 0.88rem;
+	}
+
+	td {
+		border-bottom: 1.1px solid #E1E1E1;
+	}
+
+	p,
+	span,
+	.request__data-name,
+	/* .request__data-date, */
+	.request__data-year--display,
+	.request__note {
+		font-size: 0.88rem;
+		letter-spacing: 1.1px;
+	}
+
+	p,
+	.request__data-name,
+	/* .request__data-date, */
+	.request__data-year--display,
+	.request__note {
+		padding-left: 13.75px;
+	}
+
+	.request__data-request-date,
+	.request__data-time {
+		height: 22px;
+		padding: 16.5px 0 2.75px 0;
+	}
+
+	.request__data input {
+		padding: 5.5px 13.75px;
+		border: 0.55px solid #E1E1E1;
+		font-size: 0.88rem;
+		letter-spacing: 1.65px;
+	}
+
+	.request__error {
+		margin-bottom: 13.75px;
+		font-size: 0.88rem;
+	}
+
+	/* .request__data-date, */
+	.request__data-year--display,
+	.request__data-date--display,
+	.request__clock-in-time--display,
+	.request__clock-out-time--display,
+	.request__start-time--display,
+	.request__end-time--display,
+	.request__hyphen--display,
+	.request__clock-in-time,
+	.request__clock-out-time,
+	.request__start-time,
+	.request__end-time,
+	.hyphen,
+	.request__add-start-time,
+	.request__add-end-time,
+	.request__add-hyphen {
+		z-index: 5.5;
+	}
+
+	span {
+		margin: 0 27.5px;
+	}
+
+	.request__note {
+		height: 55px;
+		margin: 16.5px 0 2.75px 0;
+		padding: 5.5px 13.75px;
+		border: 0.55px solid #E1E1E1;
+		border-radius: 2.75px;
+	}
+
+	.request__note--display {
+		width: 233.75px;
+		height: 55px;
+		margin-top: 11px;
+		padding: 5.5px 13.75px;
+	}
+
+	.btn {
+		height: 27.5px;
+		margin-top: 66px;
+		border-radius: 2.75px;
+		font-size: 1.21rem;
+	}
+
+	.request-form__message {
+		margin-top: 13.75px;
+		font-size: 1.21rem;
+	}
+}

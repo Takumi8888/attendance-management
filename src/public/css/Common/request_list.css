@@ -1,0 +1,198 @@
+.container {
+	padding: 80px 0 160px 0;
+}
+
+.page__title {
+	width: 60%;
+	margin: 0 auto;
+	padding-left: 20px;
+	border-left: 5px solid #000000;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: 3.0rem;
+}
+
+.page__tag {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	width: 60%;
+	margin: 45px auto;
+	padding: 20px 0;
+	border-bottom: 1px solid #000000;
+}
+
+.page__tag--pending-approval {
+	margin-left: 6%;
+}
+
+.page-form {
+	margin-left: 12%;
+}
+
+.a, .btn {
+	font-size: 1.6rem;
+	text-decoration: none;
+}
+
+.btn--pending-approval-on,
+.btn--approval-on {
+	font-weight: 700;
+}
+
+.btn--pending-approval-off,
+.btn--approval-off {
+	font-weight: 400;
+}
+
+table {
+	width: 60%;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 10px;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+tr {
+	background-color: #FFFFFF;
+}
+
+.request-list__header:first-child {
+	width: 5%;
+}
+
+.request-list__header:nth-child(2),
+.request-list__header:nth-child(3) {
+	width: 14%;
+}
+
+.request-list__header:nth-child(4),
+/* .request-list__header:nth-child(5), */
+.request-list__header:nth-child(6) {
+	width: 18%;
+}
+
+.request-list__header:last-child {
+	width: 13%;
+}
+
+.request-list__header {
+	border-bottom: 3px solid #E1E1E1;
+}
+
+.request-list__data {
+	border-top: 1px solid #E1E1E1;
+}
+
+.request-list__header,
+.request-list__data,
+.request-list__detail {
+	padding: 15px 0;
+	color: #737373;
+	font-weight: 700;
+	font-size: 1.6rem;
+	text-align: left;
+}
+
+.note {
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.btn--pending-approval-on,
+.btn--pending-approval-off,
+.request-list__detail,
+.pagination a {
+	color: #000000;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	margin-top: 30px;
+}
+
+.pagination li:not(.active),
+.active {
+	padding: 10px 15px;
+	border: 1px solid #000000;
+	font-size: 15px;
+}
+
+.pagination li:not(:last-child) {
+	border-right: none;
+}
+
+.pagination a,
+.pagination__link {
+	text-decoration: none;
+}
+
+.active {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	/* margin, padding: 55% */
+	/* font-size: 55% */
+	.container {
+		padding: 44px 0 88px 0;
+	}
+
+	.page__title {
+		padding-left: 11px;
+		border-left: 2.75px solid #000000;
+		font-size: 1.65rem;
+	}
+
+	.page__tag {
+		margin: 24.75px auto;
+		padding: 11px 0;
+		border-bottom: 0.55px solid #000000;
+	}
+
+	.a,
+	.btn {
+		font-size: 0.88rem;
+	}
+
+	table {
+		border-radius: 5.5px;
+	}
+
+	.request-list__header {
+		border-bottom: 1.65px solid #E1E1E1;
+	}
+
+	.request-list__data {
+		border-top: 0.55px solid #E1E1E1;
+	}
+
+	.request-list__header,
+	.request-list__data,
+	.request-list__detail {
+		padding: 8.25px 0;
+		font-size: 0.88rem;
+	}
+
+	.note {
+		width: 82.5px;
+	}
+
+	.pagination {
+		margin-top: 16.5px;
+	}
+
+	.pagination li:not(.active),
+	.active {
+		padding: 5.5px 8.25px;
+		border: 0.55px solid #000000;
+		font-size: 8.25px;
+	}
+
+}

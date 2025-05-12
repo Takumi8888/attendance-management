@@ -1,0 +1,63 @@
+.container {
+	padding-top: 240px;
+	padding-bottom: 380px;
+}
+
+.mail__text {
+	font-weight: 700;
+	font-size: 2.4rem;
+	text-align: center;
+}
+
+.verification,
+.verification-button,
+.mail-form__resend {
+	display: flex;
+	justify-content: center;
+}
+
+.verification-button {
+	align-items: center;
+	width: 17%;
+	height: 70px;
+	margin: 65px auto;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	background-color: #D9D9D9;
+	color: #000000;
+	font-weight: 700;
+	font-size: 2.4rem;
+}
+
+.mail-form__resend-button {
+	border: none;
+	background-color: #F0EFF2;
+	color: #0073CC;
+	font-size: 2.0rem;
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	/* margin, padding: 55% */
+	/* font-size: 55% */
+	.container {
+		padding-top: 132px;
+		padding-bottom: 209px;
+	}
+
+	.mail__text {
+		font-size: 1.32rem;
+	}
+
+	.verification-button {
+		height: 38.5px;
+		margin: 35.75px auto;
+		border: 0.55px solid #000000;
+		border-radius: 5.5px;
+		font-size: 1.32rem;
+	}
+
+	.mail-form__resend-button {
+		font-size: 1.1rem;
+	}
+}
