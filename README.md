@@ -114,9 +114,9 @@ Found similar results: [
 
 ## URL
 <ul>
-  <li>開発環境：<a href="">http://localhost/</a></li>
-  <li>phpMyAdmin：<a href="">http://localhost:8080/</a></li>
-  <li>MailHog：<a href="">http://localhost:8025/</a></li>
+  <li>開発環境：<a href="http://localhost/" target="_blank" rel="noopener noreferrer">http://localhost/</a></li>
+  <li>phpMyAdmin：<a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer">http://localhost:8080/</a></li>
+  <li>MailHog：<a href="http://localhost:8025/" target="_blank" rel="noopener noreferrer">http://localhost:8025/</a></li>
 </ul>
 
 ## テーブル仕様
